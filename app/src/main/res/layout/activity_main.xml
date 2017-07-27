@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pinale.androidbeaconclient.MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+        <!-- A RecyclerView with some commonly used attributes -->
+
+
+        <ImageView
+            android:id="@+id/imgMap"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:src="@android:drawable/ic_dialog_map" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:scrollbars="vertical" />
+
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
