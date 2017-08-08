@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,12 +19,13 @@ import java.util.List;
  * Created by a.pinato on 29/07/2017.
  */
 
-public class BeaconListFragment extends android.support.v4.app.Fragment {
+public class BeaconListFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    IFragmentCommunicator  fragcom;
 
     Context ctx = getActivity();  // i fragment non hanno un contesto, lo recuperdo dalla parent activity
 
@@ -44,15 +46,17 @@ public class BeaconListFragment extends android.support.v4.app.Fragment {
         {
             String link = bundle.getString("itemname");
         }
-
     }
 
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Bundle bundle = getArguments();
 
+        ctx = getActivity();
+        fragcom = (IFragmentCommunicator)  ctx;
+
+        Bundle bundle = getArguments();
 
         BeaconScanner bs = new BeaconScanner();
         List<BeaconDto> beacons = bs.Scan();
@@ -62,12 +66,15 @@ public class BeaconListFragment extends android.support.v4.app.Fragment {
             String link = bundle.getString("itemname");
             //LoadList(link);
         }
+
+        //test
+        Toast.makeText(getActivity(),"cioane proprio!",Toast.LENGTH_SHORT).show();
+
     }
 
     public void LoadList(List<BeaconDto> beacons) {
         //TextView view = (TextView) getView().findViewById(R.id.detailsText);
         //view.setText(url);
-
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.my_recycler_view);
         // use this setting to
@@ -85,7 +92,7 @@ public class BeaconListFragment extends android.support.v4.app.Fragment {
         //List<String> input = bs.Dacancellare();
         //List<BeaconDto> beacons = bs.Scan();
 
-        mAdapter = new BeaconListAdapter(beacons);
+        mAdapter = new BeaconListAdapter(beacons, fragcom);
         recyclerView.setAdapter(mAdapter);
     }
 

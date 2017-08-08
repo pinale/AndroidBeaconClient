@@ -1,7 +1,9 @@
 package com.pinale.androidbeaconclient;
 
 //import android.graphics.Region;
+import android.app.FragmentManager;
 import android.os.RemoteException;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +17,7 @@ import org.altbeacon.beacon.Region;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements BeaconConsumer {
+public class MainActivity extends AppCompatActivity implements BeaconConsumer, IFragmentCommunicator {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
 
         //Beacon - AltBeacon =============================
+        /*
         beaconManager = BeaconManager.getInstanceForApplication(this);
         // To detect proprietary beacons, you must add a line like below corresponding to your beacon
         // type.  Do a web search for "setBeaconLayout" to get the proper expression.
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         // If you wish to test beacon detection in the Android Emulator, you can use code like this:
         BeaconManager.setBeaconSimulator(new TimedBeaconSimulator() );
         ((TimedBeaconSimulator) BeaconManager.getBeaconSimulator()).createTimedSimulatedBeacons();
+        */
         //=================================================
 
 
@@ -93,4 +97,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         } catch (RemoteException e) {    }
     }
 
+    @Override
+    public void HighlightBeaconOnMap(String beacon) {
+        FragmentManager manager = getFragmentManager();
+        MapFragment mapfrag = (MapFragment) manager.findFragmentById(R.id.mapFragment);
+        mapfrag.HighlightBeacon(beacon);
+    }
 }
