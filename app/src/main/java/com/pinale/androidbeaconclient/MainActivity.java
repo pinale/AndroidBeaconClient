@@ -27,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Make sure this is before calling super.onCreate
+        setTheme(R.style.AppTheme);  //ripristino il tema base (nel manifest era stato impostato quello con lo splash)
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
