@@ -48,22 +48,19 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         ((TimedBeaconSimulator) BeaconManager.getBeaconSimulator()).createTimedSimulatedBeacons();
         //=================================================
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        // use this setting to
-        // improve performance if you know that changes
-        // in content do not change the layout size
-        // of the RecyclerView
-        recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
 
         //Fake beacons
-        BeaconScanner bs = new BeaconScanner();
-        List<BeaconDto> beacons = bs.Scan();
+        //BeaconScanner bs = new BeaconScanner();
+        //List<BeaconDto> beacons = bs.Scan();
 
-        mAdapter = new BeaconListAdapter(beacons);
-        recyclerView.setAdapter(mAdapter);
+        //Bundle args=new Bundle();
+        //args.putString("itemname", "ciao");
+        //beaconListFragment=new BeaconListFragment();
+        //beaconListFragment.setArguments(args);
+
+
+        // Add the fragment to the 'fragment_container' FrameLayout
+        //getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, beaconListFragment).commit();
     }
 
     @Override

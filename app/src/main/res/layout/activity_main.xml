@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.pinale.androidbeaconclient.MainActivity">
     <LinearLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="495dp"
         android:orientation="vertical"
@@ -22,13 +23,14 @@
             android:background="@color/colorAccent"
             android:src="@android:drawable/ic_dialog_map" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view"
+        <fragment
+            android:id="@+id/listFragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:scrollbars="vertical" />
+            android:layout_height="0dp"
+            class="com.pinale.androidbeaconclient.BeaconListFragment"
+            tools:layout="@layout/fragment_beaconlist">
+        </fragment>
 
 
 
